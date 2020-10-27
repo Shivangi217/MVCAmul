@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>@ViewBag.Title - Amul</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <style>
+
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 20px;
+            background-color: #000000;
+            font-family: Calibri;
+            font-size: medium;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #a6f2cd;
+            padding: 10px;
+        }
+    </style>
+
+</head>
+
+<div>
+
+    <img src="~/image/milk1.jpg" style="background-position: center center; width:100%; height:180px; right: auto; bottom: auto; left: auto;">
+    <div class="container text-center">
+
+    </div>
+</div>
+
+
+
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+
+
+            <div class="navbar-collapse collapse">
+                @if (Session["user"] != null)
+                {
+
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <li>@Html.ActionLink("amul product", "productlist", "amuladdproducts")</li>
+                    
+                    @*<li>@Html.ActionLink("addtocart", "Add", "amuladdproducts")</li>*@
+
+                    @*<li>@Html.ActionLink("Forgotpassword", "forgotpassword", "amulreg")</li>*@
+
+                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        <li>@Html.ActionLink("logout", "Logout", "amulreg")</li>
+
+                    </ul>
+
+                }
+                @if (Session["admin"] != null)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Adminhome", "amuladdproducts")</li>
+                        <li>@Html.ActionLink("Manage Product", "Index", "amuladdproducts")</li>
+                        <li>@Html.ActionLink("add product", "Upload", "amuladdproducts")</li>
+                        <li>@Html.ActionLink("userdetails", "userdetails", "amuladdproducts")</li>
+
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li>@Html.ActionLink("logout", "Logout", "amulreg")</li>
+                        @*<li>@Html.ActionLink("addtocart", "addtocart", "amuladdproducts")</li>*@
+
+                    </ul>
+
+                }
+                @if (Session["user"] == null && Session["Admin"] == null)
+                {
+
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                        @*<li>@Html.ActionLink("amul product", "productlist", "amuladdproducts")</li>*@
+                        @if (Session["cart"] != null)
+                        {
+                        <li>@Session["count"]</li>
+                        }
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("login", "login", "amulreg")</li>
+                        <li>@Html.ActionLink("registration", "Register", "amulreg")</li>
+                       
+                    </ul>
+                }
+
+            </div>
+
+            @*<div class="navbar-collapse collapse">*@
+
+            @*</div>*@
+        </div>
+    </div>
+
+
+
+    @*<div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+    <div class="footer">
+        @RenderBody()
+        <hr />
+        <footer class="container-fluid text-center">
+
+            <p style="font-weight: bold; color:#000066; font-size: medium; height:40px">Developed By Shivangi Patel</p>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

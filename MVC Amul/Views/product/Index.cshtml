@@ -1,0 +1,50 @@
+﻿@model MVC_Amul.Models.productdetails
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    
+    @if (Model != null)
+    {
+        if (Model.productlist.Count > 0)
+        {
+            <table border="1">
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Product Image</th>
+                </tr>
+                @foreach (var item in Model.productlist)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.productid) </td>
+                        <td>@Html.DisplayFor(m => item.productname)</td>
+                        <td>@Html.DisplayFor(m => item.price)</td>
+                        <td><img src="~/@Url.Content(item.productimage)" alt="" width="150" height="150" /></td>
+                        <td>@Html.ActionLink("Buy Now", "Index", "product", routeValues: new { productid = item.productid, }, htmlAttributes: null)</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <b>No Details Found.</b>
+        }
+    }
+</body>
+</html>
+
+
+

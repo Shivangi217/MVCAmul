@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC_Amul.Models.productdetails>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index1";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index1</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Products List</h3>
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>Price</th>
+            <th>Buy</th>
+        </tr>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.productid</td>
+                <td>@x.productname</td>
+                <td><img src="~/Content/Images/@x.productimage" width="60" /> </td>
+                <td>@x.price</td>
+                <td align="center">
+                    <a href="@Url.Action("Buy", "Cart", new { id = x.productid })">Buy Now</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

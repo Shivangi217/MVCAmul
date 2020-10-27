@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MVC_Amul.Models.amuladdproduct>
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Buy</h2>*@
+@using (Html.BeginForm())
+{
+
+
+    <div class="container">
+        @foreach (var x in Model)
+        {
+
+        <div class="row">
+            <div class="col-lg-4 col-md-3 col-sm-4">
+                <img src="~/image/@x.productimage" style="min-height:200px; width:200px;" />
+
+            </div>
+            <table border="0" style="font-size:x-large; font-family:'Times New Roman', Times, serif">
+                <div @*class="col-lg-8 col-md-8 col-sm-8"*@>
+                    <tr><td>Productid:@x.productid</td></tr>
+                    <tr><td>ProductName:@x.productname</td></tr>
+                    <tr><td>Price:@x.price</td></tr>
+                    <tr><td>Description:@x.description</td></tr>
+                    <tr><td>quantity:@x.quantity</td></tr>
+
+
+                    @*@(x.price * x.quantity)*@
+                    @*<tr><td>quantity:@Session["tot"]</td></tr>*@
+                    @*<input type="number" name="quantity" value="0" id="quantity" />*@
+                    @*<input type="submit" name="Submit" class="btn-btn-default" />*@
+
+                </div>
+
+
+            </table>
+            <br />
+
+            <a id="btn_add" href="@Url.Action("conformorder", "amuladdproducts")" class="btn btn-info btn-lg" style="margin-left:40px">
+                @*<span class="glyphicon glyphicon-eye-open"></span>*@Conform Order
+            </a>
+           
+
+        </div>
+            break;
+        }
+
+
+    </div>
+}
+

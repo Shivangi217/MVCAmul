@@ -1,0 +1,348 @@
+﻿@model MVC_Amul.Models.amuladdproduct
+@*@model IEnumerable<MVC_Amul.Models.amuladdproduct>*@
+
+@{
+    ViewBag.Title = "viewdetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>viewdetails</h2>*@
+
+<style type="text/css">
+
+
+
+    .auto-style2 {
+        text-align: left;
+        font-size: xx-large;
+    }
+
+
+
+
+    .auto-style1 {
+        width: 40%;
+        height: 300px;
+        background-color: #f8eeee;
+        text-align: center;
+        border-bottom: initial;
+        table-layout: center;
+    }
+
+    .auto-style2 {
+        text-align: center;
+        height: 77px;
+        /*background-color: #FFFF66;*/
+    }
+
+    .auto-style5 {
+        width: 540px;
+        text-align: center;
+        image-resolution: snap;
+        /*background-color: #FFFF66;*/
+    }
+
+    .auto-style8 {
+        height: 54px;
+        /*background-color: #FFFF66;*/
+        text-align: center;
+        width: 540px;
+    }
+
+    .auto-style9 {
+        /*background-color: #FFFF66;*/
+        width: 178px;
+    }
+
+    .auto-style10 {
+        height: 54px;
+        /*background-color: #FFFF66;*/
+        width: 178px;
+    }
+
+    .newStyle1 {
+        font-family: "Times New Roman", Times, serif;
+    }
+
+    .auto-style12 {
+        font-family: "Times New Roman", Times, serif;
+        font-size: large;
+    }
+
+    .newStyle2 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .auto-style13 {
+        font-family: "times New Roman", Times, serif;
+        font-size: larger;
+    }
+
+    .newStyle3 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle4 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle5 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle6 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle7 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle8 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle9 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle10 {
+        font-family: "times New Roman", Times, serif;
+    }
+
+    .newStyle11 {
+        font-family: "Matura MT Script Capitals";
+    }
+
+    .auto-style14 {
+        font-family: "Matura MT Script Capitals";
+        font-size: xx-large;
+    }
+</style>
+
+<div>
+
+
+
+    <div class="auto-style2" style="margin-top:10px;margin-bottom:30px; color:Highlight;"><strong>ProductDetails</strong></div>
+
+
+    <table border="4" class="auto-style1" style="table-layout:center">
+
+        <tr>
+            <td class="auto-style2" colspan="2">
+                <dt>
+                    @Html.DisplayNameFor(model => model.productname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.productname)
+                </dd>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style5" rowspan="5">
+                <dd>
+                    @*@Html.DisplayFor(model => model.productimage)*@
+                    <img src="~/image/@Model.productimage" class="img-responsive" width="100%" height="100px" style="width:auto; height:150px;" />
+
+                </dd>
+            </td>
+            <td class="auto-style9">
+                <span class="auto-style12">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.price)
+                    </dd>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style9">
+                <span class="auto-style12">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.description)
+                    </dd>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style10">
+                <span class="auto-style12">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.quantity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.quantity)
+
+                    </dd>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style10">
+                <dt>
+                    @Html.DisplayNameFor(model => model.available)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.available)*@
+                    @{
+                        string s1 = @Model.quantity;
+                        int s2 = Convert.ToInt32(s1.ToString());
+                    }
+                    <select id="select1" onchange="s1();">
+                        @for (int i = 1; i <= s2; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+
+
+                    </select> @*<input type="text" id="a1" />
+                    <script>
+                        s1()
+                        {
+                            var a = document.getElementById("#select1").value;
+                            var b = document.getElementById("#a1")
+                            b.value = a;
+                        }
+                    </script>*@
+                </dd>
+
+            </td>
+
+        </tr>
+        @*<tr>
+                <td>
+                    <span class="auto-style13">Quantity :</span> <asp:DropDownList ID="ddqty" runat="server"></asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style8" colspan="2">
+                    <asp:Label ID="Label5" runat="server" Text="Label" CssClass="auto-style12"></asp:Label>
+                    <br />
+                    <asp:ImageButton ID="ImageButton1" runat="server" CommandArgument='<%#Eval("productid")%>' CommandName="addtowishlist" Height="40px" OnClick="ImageButton1_Click" Width="40px" />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style5" colspan="2">
+                    <asp:Label ID="lblmsg" runat="server" style="color:red;" CssClass="auto-style14"></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2" colspan="2">
+                    <asp:Button ID="Button2" runat="server" BackColor="#99CCFF" CommandArgument='<%#  Eval("productid")%>' CommandName="buynow" Height="42px" Text="Buy Now" Width="148px" OnClick="Button2_Click" />
+                    &nbsp;
+                    <asp:Button ID="Button1" runat="server" BackColor="#99CCFF" CommandArgument='<%#  Eval("productid")%>' CommandName="addtocart" Height="42px" Text="Add To Cart" Width="148px" OnClick="Button1_Click" />
+                    <br />
+                </td>
+            </tr>*@
+
+    </table>
+
+
+</div>
+
+
+
+@*<h4>amuladdproduct</h4>*@
+@*<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.productname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productname)
+        </dd>
+
+        <dt>*@
+@*@Html.DisplayNameFor(model => model.productimage)*@
+
+@*</dt>
+
+    <dd>*@
+@*@Html.DisplayFor(model => model.productimage)*@
+@*<img src="~/image/@Model.productimage" class="img-responsive" width="100%" height="100px" style="width:auto; height:150px;" />
+
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.price)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.price)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.description)
+    </dt>*@
+
+@*<dd>
+        @Html.DisplayFor(model => model.description)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.quantity)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.quantity)
+
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.categoryname)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.categoryname)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.available)
+    </dt>
+
+    <dd>
+
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.soldout)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.soldout)
+    </dd>*@
+
+@*</dl>
+    </div>*@
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.productid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.productid }) |*@
+    @*@Html.ActionLink("Add to Cart", "Addtocart", "amuladdproducts", new { id = Model.productid })*@
+</p>
+<div>
+
+    <a id="btn_add" href="@Url.Action("Buy", "amuladdproducts", new { id = Model.productid })" class="btn btn-info btn-lg" style="margin-left:60px">
+        @*<span class="glyphicon glyphicon-shopping-cart"></span>*@Buy 
+    </a>
+
+    <a id="btn_add" href="@Url.Action("Index", "Home")" class="btn btn-info btn-lg" style="margin-left:60px">
+        @*<span class="glyphicon glyphicon-eye-open"></span>*@ Continue shopping
+    </a>
+    <br />
+    <br />
+
+</div> 

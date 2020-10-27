@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVC_Amul.Models.productdetails>
+@{
+    ViewBag.Title = "Addtocart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Addtocart</h2>
+
+@using (Html.BeginForm())
+{
+
+
+<div class="container">
+    @foreach (var x in Model)
+    {
+       
+<div class="row">
+    <div class="col-lg-4 col-md-3 col-sm-4">
+        <img style="min-height:200px; width:200px;" scr="@Url.Content(x.productimage)" />
+
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-8">
+        <h1>ProductName:@x.productname</h1>
+        <h2>Price:@x.price</h2>
+        <h3>Description:@x.description</h3>
+
+        <input type="number" name="quantity" value="0" id="quantity" />
+        <input type="submit" name="Submit" class="btn-btn-default" />
+
+    </div>
+
+</div>
+}
+
+
+</div>
+}
+
+

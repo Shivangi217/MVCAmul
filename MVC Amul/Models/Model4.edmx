@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StudentModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Student.dbo.amuladdress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="amuladdress">
+          <Key>
+            <PropertyRef Name="orderid" />
+            <PropertyRef Name="fullname" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="contactno" />
+          </Key>
+          <Property Name="orderid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar(max)" Nullable="false" />
+          <Property Name="contactno" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amuladdtocart">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="productname" Type="varchar(max)" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amulmilkproduct">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="productname" Type="varchar(max)" Nullable="false" />
+          <Property Name="productimage" Type="varchar(max)" Nullable="false" />
+          <Property Name="price" Type="bigint" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Student.dbo.amulorderdetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="amulorderdetails">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sno" Type="int" />
+          <Property Name="productid" Type="int" />
+          <Property Name="productname" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="dateoforder" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="StudentModel1StoreContainer">
+          <EntitySet Name="amuladdtocart" EntityType="Self.amuladdtocart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amulmilkproduct" EntityType="Self.amulmilkproduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="amuladdress" EntityType="Self.amuladdress" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [amuladdress].[orderid] AS [orderid], 
+    [amuladdress].[fullname] AS [fullname], 
+    [amuladdress].[address] AS [address], 
+    [amuladdress].[city] AS [city], 
+    [amuladdress].[email] AS [email], 
+    [amuladdress].[contactno] AS [contactno]
+    FROM [dbo].[amuladdress] AS [amuladdress]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="amulorderdetails" EntityType="Self.amulorderdetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [amulorderdetails].[orderid] AS [orderid], 
+    [amulorderdetails].[sno] AS [sno], 
+    [amulorderdetails].[productid] AS [productid], 
+    [amulorderdetails].[productname] AS [productname], 
+    [amulorderdetails].[price] AS [price], 
+    [amulorderdetails].[quantity] AS [quantity], 
+    [amulorderdetails].[dateoforder] AS [dateoforder]
+    FROM [dbo].[amulorderdetails] AS [amulorderdetails]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="amuladdtocart">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amulmilkproduct">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="productimage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Int64" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amuladdress">
+          <Key>
+            <PropertyRef Name="orderid" />
+            <PropertyRef Name="fullname" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="contactno" />
+          </Key>
+          <Property Name="orderid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="amulorderdetail">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sno" Type="Int32" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="productname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="dateoforder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="StudentEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="amuladdtocarts" EntityType="Self.amuladdtocart" />
+          <EntitySet Name="amulmilkproducts" EntityType="Self.amulmilkproduct" />
+          <EntitySet Name="amuladdresses" EntityType="Self.amuladdress" />
+          <EntitySet Name="amulorderdetails" EntityType="Self.amulorderdetail" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentModel1StoreContainer" CdmEntityContainer="StudentEntities3">
+          <EntitySetMapping Name="amuladdtocarts">
+            <EntityTypeMapping TypeName="StudentModel1.amuladdtocart">
+              <MappingFragment StoreEntitySet="amuladdtocart">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amulmilkproducts">
+            <EntityTypeMapping TypeName="StudentModel1.amulmilkproduct">
+              <MappingFragment StoreEntitySet="amulmilkproduct">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="productimage" ColumnName="productimage" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amuladdresses">
+            <EntityTypeMapping TypeName="StudentModel1.amuladdress">
+              <MappingFragment StoreEntitySet="amuladdress">
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="amulorderdetails">
+            <EntityTypeMapping TypeName="StudentModel1.amulorderdetail">
+              <MappingFragment StoreEntitySet="amulorderdetails">
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="sno" ColumnName="sno" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="dateoforder" ColumnName="dateoforder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
